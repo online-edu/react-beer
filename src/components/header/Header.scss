@@ -1,0 +1,10 @@
+@import "../../styles/colors";
+
+.cg-header {
+  box-shadow: 0px 0px 40px 0px $light-shadow;
+  background-color: $white !important;
+  height: 75px;
+  .cg-header__brand {
+    // padding: 0 !important;
+  }
+}

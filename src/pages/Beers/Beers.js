@@ -1,7 +1,13 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 import BeerService from "./BeerService";
-import { List, HeaderBar } from "./../../components";
+import {
+  List,
+  HeaderBar,
+  Breadcrumb,
+  BreadcrumbItem
+} from "./../../components";
 
 class Beers extends Component {
   constructor(props) {
@@ -48,6 +54,11 @@ class Beers extends Component {
       <div>
         <HeaderBar />
         <div className="row my-4 mx-4">
+          <div className=" col-sm-12">
+            <Breadcrumb>
+              <BreadcrumbItem title="Home" active={true} />
+            </Breadcrumb>
+          </div>
           <div className="col-md-6 col-sm-12">
             <div className="card">
               <List
