@@ -1,0 +1,13 @@
+@import "../../styles/colors";
+.cg-list {
+  .cg-list__item {
+    min-height: 64px;
+  }
+  .cg-list__item-empty {
+    color: $link;
+    font-size: 32px;
+    .cg-list__item-empty-emoticon {
+      font-size: 32px;
+    }
+  }
+}

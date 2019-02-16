@@ -6,7 +6,7 @@ class ListItemActions extends Component {
     super(props);
     this.toggle = false;
     this.state = {
-      icon: "favorite_border"
+      icon: this.props.favorite ? "favorite" : "favorite_border"
     };
   }
 
@@ -24,6 +24,7 @@ class ListItemActions extends Component {
 
   render() {
     const { itemId: id } = this.props;
+
     return (
       <div>
         <button

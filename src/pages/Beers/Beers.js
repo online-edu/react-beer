@@ -8,6 +8,7 @@ class Beers extends Component {
     super(props);
     this.state = {
       beers: [],
+      favoriteBeers: [],
       raw: {},
       loading: true
     };
@@ -22,8 +23,11 @@ class Beers extends Component {
     this.setState({ beers: [...newBeers, ...beers] });
   }
 
-  onFavoriteClick(data) {
-    console.log(data);
+  onFavoriteClick({ beer, fav }) {
+    const beers = !!fav
+      ? this.beerService.addFavoriteBeer(beer)
+      : this.beerService.removeFavoriteBeer(beer.id);
+    this.setState({ favoriteBeers: beers });
   }
 
   componentDidMount() {
@@ -35,22 +39,34 @@ class Beers extends Component {
         this.setState({ raw: resp, beers: tempBeers, loading: false });
       })
       .catch(err => console.log(err));
+
+    this.setState({ favoriteBeers: this.beerService.loadFavoriteBeers() });
   }
 
   render() {
     return (
       <div>
         <HeaderBar />
-        <div className="row  my-4 mx-4">
+        <div className="row my-4 mx-4">
           <div className="col-md-6 col-sm-12">
             <div className="card">
               <List
-                title="List of beers"
+                title="List of beers 🍻"
                 btnCaption="Add more"
                 loader={this.state.loading}
                 onHeaderAction={() => this.loadMoreBeers()}
-                onFavoriteClick={this.onFavoriteClick}
+                onFavoriteClick={this.onFavoriteClick.bind(this)}
                 items={this.state.beers}
+              />
+            </div>
+          </div>
+          <div className="col-md-6 col-sm-12">
+            <div className="card">
+              <List
+                title="My favorite beers 🍺"
+                favorite={true}
+                onFavoriteClick={this.onFavoriteClick.bind(this)}
+                items={this.state.favoriteBeers}
               />
             </div>
           </div>

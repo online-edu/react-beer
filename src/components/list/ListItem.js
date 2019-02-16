@@ -16,6 +16,7 @@ const ListItem = props => (
       </div>
       <div className="col-md-3 d-flex justify-content-between align-items-center">
         <ListItemActions
+          favorite={props.favorite}
           onFavoriteClick={toggle => props.onFavoriteClick(toggle)}
           itemId={props.item.id}
         />
