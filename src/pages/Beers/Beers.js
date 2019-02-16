@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import BeerService from "./BeerService";
-import { List } from "./../../components";
+import { List, HeaderBar } from "./../../components";
 
 class Beers extends Component {
   constructor(props) {
@@ -22,6 +22,10 @@ class Beers extends Component {
     this.setState({ beers: [...newBeers, ...beers] });
   }
 
+  onFavoriteClick(data) {
+    console.log(data);
+  }
+
   componentDidMount() {
     this.beerService
       .loadBeers()
@@ -36,14 +40,16 @@ class Beers extends Component {
   render() {
     return (
       <div>
-        <div className="row">
+        <HeaderBar />
+        <div className="row  my-4 mx-4">
           <div className="col-md-6 col-sm-12">
             <div className="card">
               <List
                 title="List of beers"
                 btnCaption="Add more"
                 loader={this.state.loading}
-                handleClick={() => this.loadMoreBeers()}
+                onHeaderAction={() => this.loadMoreBeers()}
+                onFavoriteClick={this.onFavoriteClick}
                 items={this.state.beers}
               />
             </div>

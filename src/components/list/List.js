@@ -12,9 +12,16 @@ class List extends Component {
           title={title}
           loader={loader}
           btnCaption={btnCaption}
-          handleClick={this.props.handleClick}
+          handleClick={this.props.onHeaderAction}
         />
-        {items && items.map(beer => <ListItem item={beer} key={beer.id} />)}
+        {items &&
+          items.map(beer => (
+            <ListItem
+              item={beer}
+              onFavoriteClick={fav => this.props.onFavoriteClick({ beer, fav })}
+              key={beer.id}
+            />
+          ))}
       </ul>
     );
   }
