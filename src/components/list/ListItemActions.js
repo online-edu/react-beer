@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 class ListItemActions extends Component {
   constructor(props) {
     super(props);
-    this.toggle = false;
+    this.toggle = this.props.favorite;
     this.state = {
       icon: this.props.favorite ? "favorite" : "favorite_border"
     };
