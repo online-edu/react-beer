@@ -6,7 +6,9 @@ export default class BeerService {
   }
 
   loadBeers() {
-    return this.rest.get(`${api}/beers/?key=${key}&hasLabels=Y`);
+    return this.rest.get(
+      `${api}/beers/?key=${key}&hasLabels=Y&order=random&randomCount=10`
+    );
   }
 
   loadBeerById(id) {

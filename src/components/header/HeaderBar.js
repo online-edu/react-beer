@@ -5,7 +5,7 @@ import "./Header.scss";
 const HeaderBar = () => (
   <nav className="navbar sticky-top header cg-header">
     <NavLink to="/" className="navbar-brand cg-header__brand">
-      Creative Groups
+      Creative Groups <span>🍻</span>
     </NavLink>
   </nav>
 );

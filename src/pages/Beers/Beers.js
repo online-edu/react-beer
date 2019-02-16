@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 import BeerService from "./BeerService";
 import {
   List,
@@ -14,18 +13,24 @@ class Beers extends Component {
     this.state = {
       beers: [],
       favoriteBeers: [],
-      raw: {},
       loading: true
     };
     this.beerService = new BeerService();
   }
 
-  loadMoreBeers() {
-    const { beers, raw } = this.state;
-    const newBeers = raw.data.slice(10, 20);
-    console.log(raw);
-    console.log([...newBeers, ...beers]);
-    this.setState({ beers: [...newBeers, ...beers] });
+  loadBeers() {
+    this.setState({ loading: true });
+    this.beerService
+      .loadBeers()
+      .then(resp => {
+        const { beers } = this.state;
+        const newBeers = resp.data;
+        this.setState({
+          beers: [...newBeers, ...beers],
+          loading: false
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   onFavoriteClick({ beer, fav }) {
@@ -36,15 +41,7 @@ class Beers extends Component {
   }
 
   componentDidMount() {
-    this.beerService
-      .loadBeers()
-      .then(resp => {
-        console.log(resp);
-        let tempBeers = resp.data.slice(0, 10);
-        this.setState({ raw: resp, beers: tempBeers, loading: false });
-      })
-      .catch(err => console.log(err));
-
+    this.loadBeers();
     this.setState({ favoriteBeers: this.beerService.loadFavoriteBeers() });
   }
 
@@ -61,10 +58,10 @@ class Beers extends Component {
           <div className="col-md-6 col-sm-12">
             <div className="card">
               <List
-                title="List of beers 🍻"
-                btnCaption="Add more"
+                title={`List of beers (${this.state.beers.length})`}
+                btnCaption="View more"
                 loader={this.state.loading}
-                onHeaderAction={() => this.loadMoreBeers()}
+                onHeaderAction={() => this.loadBeers()}
                 onFavoriteClick={this.onFavoriteClick.bind(this)}
                 items={this.state.beers}
               />

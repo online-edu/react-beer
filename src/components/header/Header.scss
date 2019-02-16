@@ -5,6 +5,12 @@
   background-color: $white !important;
   height: 75px;
   .cg-header__brand {
-    // padding: 0 !important;
+    position: relative;
+    span {
+      font-size: 40px;
+      position: absolute;
+      top: -5px;
+      right: -45px;
+    }
   }
 }
