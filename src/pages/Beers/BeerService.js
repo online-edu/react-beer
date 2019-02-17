@@ -12,25 +12,29 @@ export default class BeerService {
   }
 
   loadBeerById(id) {
-    return this.rest.get(`${api}/beers/?key=${key}&hasLabels=Y`);
+    return this.rest.get(`${api}/beer/${id}/?key=${key}`);
   }
 
   loadFavoriteBeers() {
     return this.getBeersFromStorage();
   }
 
+  onFavorite(beer, mode) {
+    return !!mode
+      ? this.addFavoriteBeer(beer)
+      : this.removeFavoriteBeer(beer.id);
+  }
+
   addFavoriteBeer(beer) {
-    let beers = this.getBeersFromStorage();
-    const found = this.findBeer(beers, beer.id);
+    let { beers, found } = this.findBeerById(beer.id);
     if (found < 0 && beers.length <= 10) beers.push(beer);
     localStorage.setItem("beers", JSON.stringify(beers));
     return beers;
   }
 
   removeFavoriteBeer(id) {
-    let beers = this.getBeersFromStorage();
-    const found = this.findBeer(beers, id);
-    if (found >= 0) beers.splice(found, 1);
+    let { beers, found: i } = this.findBeerById(id);
+    if (i >= 0) beers.splice(i, 1);
     localStorage.setItem("beers", JSON.stringify(beers));
     return beers;
   }
@@ -40,7 +44,9 @@ export default class BeerService {
     return (beers && JSON.parse(beers)) || [];
   }
 
-  findBeer(beers, id) {
-    return beers.findIndex(beer => beer.id === id);
+  findBeerById(id) {
+    let beers = this.getBeersFromStorage();
+    const found = beers.findIndex(beer => beer.id === id);
+    return { beers, found };
   }
 }

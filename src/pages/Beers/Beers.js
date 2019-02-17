@@ -29,9 +29,7 @@ class Beers extends Component {
   }
 
   onFavoriteClick({ beer, fav }) {
-    const beers = !!fav
-      ? this.beerService.addFavoriteBeer(beer)
-      : this.beerService.removeFavoriteBeer(beer.id);
+    const beers = this.beerService.onFavorite(beer, fav);
     this.setState({ favoriteBeers: beers });
   }
 
