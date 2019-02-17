@@ -39,18 +39,19 @@ class Beers extends Component {
   }
 
   render() {
+    const { beers, favoriteBeers } = this.state;
     return (
       <div className="container-fluid px-4 py-4">
         <div className="row">
           <div className="col-md-6 col-sm-12">
             <div className="card">
               <List
-                title={`List of beers (${this.state.beers.length})`}
+                title={`List of beers (${beers.length})`}
                 btnCaption="View more"
                 loader={this.state.loading}
                 onHeaderAction={() => this.loadBeers()}
                 onFavoriteClick={this.onFavoriteClick.bind(this)}
-                items={this.state.beers}
+                items={beers}
               />
             </div>
           </div>
@@ -60,7 +61,7 @@ class Beers extends Component {
                 title="My favorite beers 🍺"
                 favorite={true}
                 onFavoriteClick={this.onFavoriteClick.bind(this)}
-                items={this.state.favoriteBeers}
+                items={favoriteBeers}
               />
             </div>
           </div>

@@ -7,7 +7,7 @@ import "./List.scss";
 
 class List extends Component {
   render() {
-    const { btnCaption, title, items, loader, favorite } = this.props;
+    const { btnCaption, title, items = [], loader, favorite } = this.props;
     return (
       <ul className="list-group cg-list">
         <TransitionGroup>
@@ -17,9 +17,7 @@ class List extends Component {
             btnCaption={btnCaption}
             handleClick={this.props.onHeaderAction}
           />
-
-          {(items &&
-            items.length > 0 &&
+          {items &&
             items.map(beer => (
               <CSSTransition key={beer.id} timeout={500} classNames="fade">
                 <ListItem
@@ -30,7 +28,12 @@ class List extends Component {
                   }
                 />
               </CSSTransition>
-            ))) || <ListEmpty />}
+            ))}
+          {items.length === 0 && (
+            <CSSTransition timeout={100} classNames="fade">
+              <ListEmpty />
+            </CSSTransition>
+          )}
         </TransitionGroup>
       </ul>
     );
