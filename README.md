@@ -20,6 +20,7 @@ Visit [`https://react-beers-cg.herokuapp.com`](https://react-beers-cg.herokuapp.
 1.  Build the app
     1.  Build - `npm run build` or `yarn build`
     2.  Check `./dist` folder
+1.  Please [download](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en) CORS extension, if not already, and enable it (because of BreweryDB API).
 
 ## Enhancement
 
