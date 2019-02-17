@@ -4,7 +4,7 @@ import ListItemActions from "./ListItemActions";
 
 const ListItem = props => (
   <li className="list-group-item">
-    <div class="media">
+    <div className="media">
       <ListItemIcon img={props.item.labels.icon} alt={props.item.nameDisplay} />
       <div className="media-body">
         <div className="float-left">

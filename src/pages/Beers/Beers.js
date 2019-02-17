@@ -41,9 +41,9 @@ class Beers extends Component {
   render() {
     const { beers, favoriteBeers } = this.state;
     return (
-      <div className="container-fluid px-4 py-4">
+      <div className="container-fluid px-4 pt-4">
         <div className="row">
-          <div className="col-md-6 col-sm-12">
+          <div className="col-md-6 col-sm-12 mb-4">
             <div className="card">
               <List
                 title={`Beers (${beers.length})`}
@@ -55,7 +55,7 @@ class Beers extends Component {
               />
             </div>
           </div>
-          <div className="col-md-6 col-sm-12">
+          <div className="col-md-6 col-sm-12 mb-4">
             <div className="card">
               <List
                 title="My favorite beers 🍺"

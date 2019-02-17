@@ -65,7 +65,7 @@ class BeerDetails extends Component {
                 {(!loading && (
                   <section>
                     <h5 className="card-title mb-3">
-                      {beer.nameDisplay}
+                      {beer.style.shortName}
                       <FavButton
                         favorite={favorite}
                         onClick={this.onFavoriteClick.bind(this)}
@@ -96,8 +96,8 @@ class BeerDetails extends Component {
                         <dl className="row beer-details__row ml-0">
                           <dt className="col-sm-3">Name</dt>
                           <dd className="col-sm-9">{beer.style.name}</dd>
-                          <dt className="col-sm-3">Short name</dt>
-                          <dd className="col-sm-9">{beer.style.shortName}</dd>
+                          <dt className="col-sm-3">Display name</dt>
+                          <dd className="col-sm-9">{beer.nameDisplay}</dd>
                           <dt className="col-sm-3">Category</dt>
                           <dd className="col-sm-9">
                             {beer.style.category.name}
