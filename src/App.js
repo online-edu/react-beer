@@ -1,6 +1,6 @@
 import React, { Component, Suspense } from "react";
 import { BrowserRouter, Switch, Route, withRouter } from "react-router-dom";
-import { HeaderBar, Spinner } from "./components";
+import { HeaderBar, Spinner, Footer } from "./components";
 import Beers from "./pages/beers/Beers";
 import BeerDetails from "./pages/beers/BeerDetails";
 import "./App.scss";
@@ -21,6 +21,7 @@ class App extends Component {
             </Switch>
           </BrowserRouter>
         </Suspense>
+        <Footer />
       </div>
     );
   }

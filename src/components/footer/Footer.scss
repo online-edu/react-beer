@@ -1,0 +1,9 @@
+@import "../../styles/colors";
+
+.cg-footer {
+  padding: 1em 0;
+  background: $footer;
+  p {
+    color: $white;
+  }
+}
