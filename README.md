@@ -25,4 +25,4 @@ Visit [`https://online-edu.github.io/react-beer`](https://online-edu.github.io/r
 
 - Redux
 - IndexDB
-- Images, which are received from an API, are not all similar in size, it, thus, fails to maintain aspect ratio.
+- Webpack environment based configuration
