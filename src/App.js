@@ -12,15 +12,17 @@ class App extends Component {
     return (
       <div className="cg-container">
         <HeaderBar />
-        <Suspense fallback={<Spinner />}>
-          <BrowserRouter>
-            <Switch>
-              <Route exact={true} path="/" component={Beers} />
-              <Route path="/dashboard" component={Beers} />
-              <Route path="/details/:id" component={BeerDetails} />
-            </Switch>
-          </BrowserRouter>
-        </Suspense>
+        <section>
+          <Suspense fallback={<Spinner />}>
+            <BrowserRouter>
+              <Switch>
+                <Route exact={true} path="/" component={Beers} />
+                <Route path="/dashboard" component={Beers} />
+                <Route path="/details/:id" component={BeerDetails} />
+              </Switch>
+            </BrowserRouter>
+          </Suspense>
+        </section>
         <Footer />
       </div>
     );

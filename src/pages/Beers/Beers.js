@@ -46,7 +46,7 @@ class Beers extends Component {
           <div className="col-md-6 col-sm-12">
             <div className="card">
               <List
-                title={`List of beers (${beers.length})`}
+                title={`Beers (${beers.length})`}
                 btnCaption="View more"
                 loader={this.state.loading}
                 onHeaderAction={() => this.loadBeers()}
