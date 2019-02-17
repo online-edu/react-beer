@@ -1,8 +1,16 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const htmlPlugin = new HtmlWebpackPlugin({
   template: "./src/index.html",
   filename: "./index.html"
+});
+
+const cssPlugin = new MiniCssExtractPlugin({
+  filename: "[name].css",
+  chunkFilename: "[id].css"
 });
 
 module.exports = {
@@ -28,5 +36,15 @@ module.exports = {
   devServer: {
     historyApiFallback: true
   },
-  plugins: [htmlPlugin]
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
+  plugins: [htmlPlugin, cssPlugin]
 };
