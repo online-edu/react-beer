@@ -8,7 +8,7 @@ const ListItemActions = props => (
       favorite={props.favorite}
       onClick={fav => props.onFavoriteClick(fav)}
     />
-    <NavLink to={`/details/${props.itemId}`} className="btn btn-link">
+    <NavLink to={`/beer-details/${props.itemId}`} className="btn btn-link">
       Details
     </NavLink>
   </div>

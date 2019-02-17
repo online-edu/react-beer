@@ -1,6 +1,12 @@
 import React, { Component, Suspense, lazy } from "react";
-import { BrowserRouter, Switch, Route, withRouter } from "react-router-dom";
-import { HeaderBar, Spinner, Footer } from "./components";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  withRouter,
+  Redirect
+} from "react-router-dom";
+import { HeaderBar, Spinner, Footer, NotFound } from "./components";
 import Beers from "./pages/beers/Beers";
 import "./App.scss";
 
@@ -19,9 +25,10 @@ class App extends Component {
           <Suspense fallback={<Spinner />}>
             <BrowserRouter>
               <Switch>
-                <Route exact={true} path="/" component={Beers} />
+                <Redirect from="/" exact to="/dashboard" />
                 <Route path="/dashboard" component={Beers} />
-                <Route path="/details/:id" component={BeerDetails} />
+                <Route path="/beer-details/:id" component={BeerDetails} />
+                <Route exact path="**" component={NotFound} />
               </Switch>
             </BrowserRouter>
           </Suspense>

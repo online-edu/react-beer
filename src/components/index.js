@@ -5,6 +5,7 @@ import Spinner from "./spinner";
 import FavButton from "./fav-button";
 import Breadcrumb from "./breadcrumb";
 import BreadcrumbItem from "./breadcrumb/BreadcrumbItem";
+import NotFound from "./not-found";
 
 export {
   HeaderBar,
@@ -13,5 +14,6 @@ export {
   Breadcrumb,
   BreadcrumbItem,
   FavButton,
-  Footer
+  Footer,
+  NotFound
 };
