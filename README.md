@@ -12,7 +12,7 @@ Visit [`https://online-edu.github.io/react-beer`](https://online-edu.github.io/r
 1.  Install any good IDE of your choice e.g. [Visual Studio Code](https://code.visualstudio.com/)
 1.  Launch VS Code and open this project (after either by [cloning](https://github.com/online-edu/react-beer.git) or [downloading](https://github.com/online-edu/react-beer/archive/master.zip))
 1.  Open terminal (if VS Code `Ctrl`-`backtick`)
-1.  Install dependencies:    
+1.  Install dependencies:
     1.  App dependencies - `npm install` or `yarn install`
 1.  Run the app
     1.  Serve - `npm start` or `yarn start`
@@ -25,3 +25,4 @@ Visit [`https://online-edu.github.io/react-beer`](https://online-edu.github.io/r
 
 - Redux
 - IndexDB
+- Images, which are received from an API, are not all similar in size, it, thus, fails to maintain aspect ratio.

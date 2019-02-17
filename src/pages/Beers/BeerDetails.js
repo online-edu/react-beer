@@ -14,7 +14,8 @@ class BeerDetails extends Component {
     this.state = {
       beer: {},
       loading: true,
-      favorite: false
+      favorite: false,
+      err: false
     };
     this.beerService = new BeerService();
   }
@@ -23,22 +24,33 @@ class BeerDetails extends Component {
     this.beerService.onFavorite(this.state.beer, fav);
   }
 
+  loadBeer(id) {
+    this.beerService
+      .loadBeerById(id)
+      .then(({ data, status, errorMessage }) => {
+        if (status !== "success") {
+          this.handleError(errorMessage);
+          return;
+        }
+        const { found } = this.beerService.findBeerById(data.id);
+        this.setState({ beer: data, loading: false, favorite: found > 0 });
+      })
+      .catch(err => this.handleError(errorMessage));
+  }
+
+  handleError(err) {
+    this.setState({ err: true });
+  }
+
   componentDidMount() {
     const {
       match: { params }
     } = this.props;
-
-    this.beerService
-      .loadBeerById(params.id)
-      .then(({ data }) => {
-        const { found } = this.beerService.findBeerById(data.id);
-        this.setState({ beer: data, loading: false, favorite: found > 0 });
-      })
-      .catch(err => console.log(err));
+    this.loadBeer(params.id);
   }
 
   render() {
-    const { beer, loading, favorite } = this.state;
+    const { beer, loading, favorite, err } = this.state;
     return (
       <div className="container-fluid px-4 py-4 beer-details">
         <div className="row">
@@ -101,7 +113,8 @@ class BeerDetails extends Component {
                       </div>
                     </div>
                   </section>
-                )) || <Spinner />}
+                )) ||
+                  (!err && <Spinner />)}
               </div>
             </div>
           </div>
