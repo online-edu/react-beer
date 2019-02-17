@@ -71,7 +71,7 @@ class BeerDetails extends Component {
                       />
                     </h5>
                     <div className="row">
-                      <div className="col-md-4">
+                      <div className="col-md-4 d-flex justify-content-center align-items-center">
                         <img
                           src={
                             beer.isOrganic === "Y"
