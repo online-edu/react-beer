@@ -1,24 +1,26 @@
-import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-
-import { HeaderBar } from "./components";
-import Beers from "./pages/Beers";
+import React, { Component, Suspense } from "react";
+import { BrowserRouter, Switch, Route, withRouter } from "react-router-dom";
+import { HeaderBar, Spinner } from "./components";
+import Beers from "./pages/beers/Beers";
+import BeerDetails from "./pages/beers/BeerDetails";
 import "./App.scss";
+
+// const BeerDetails = withRouter(lazy(() => import("./pages/beers/BeerDetails")));
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="cg-container">
         <HeaderBar />
-        <div className="cg-container my-4 mx-4">
+        <Suspense fallback={<Spinner />}>
           <BrowserRouter>
             <Switch>
-              {/* <Redirect from="/" exact to="/dashboard" /> */}
-              <Route path="/" component={Beers} />
+              <Route exact={true} path="/" component={Beers} />
               <Route path="/dashboard" component={Beers} />
+              <Route path="/details/:id" component={BeerDetails} />
             </Switch>
           </BrowserRouter>
-        </div>
+        </Suspense>
       </div>
     );
   }
