@@ -1,12 +1,7 @@
 import React from "react";
 
 const ListItemIcon = ({ img, alt }) => (
-  <img
-    src={img}
-    className="mr-3"
-    style={{ width: "48px", height: "48px" }}
-    alt={alt}
-  />
+  <img src={img} className="rounded mr-4 align-self-center" alt={alt} />
 );
 
 export default ListItemIcon;

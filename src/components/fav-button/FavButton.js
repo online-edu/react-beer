@@ -29,7 +29,7 @@ class FavButton extends Component {
         className="btn btn-link"
         onClick={this.onToggle.bind(this)}
       >
-        <i className="material-icons">{icon}</i>
+        <i className="material-icons pt-2">{icon}</i>
       </button>
     );
   }
