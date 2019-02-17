@@ -7,6 +7,9 @@ const htmlPlugin = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: ["@babel/polyfill", "./src"],
+  output: {
+    publicPath: "/"
+  },
   module: {
     rules: [
       {
@@ -21,6 +24,9 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [htmlPlugin]
 };
