@@ -1,4 +1,4 @@
-import Rest, { api, key } from "../../utils";
+import Rest, { proxyApi } from "../../utils";
 
 export default class BeerService {
   constructor() {
@@ -6,13 +6,11 @@ export default class BeerService {
   }
 
   loadBeers() {
-    return this.rest.get(
-      `${api}/beers/?key=${key}&hasLabels=Y&order=random&randomCount=10`
-    );
+    return this.rest.get(`${proxyApi}/beers`); //`${api}/beers/?key=${key}&hasLabels=Y&order=random&randomCount=10`
   }
 
   loadBeerById(id) {
-    return this.rest.get(`${api}/beer/${id}/?key=${key}`);
+    return this.rest.get(`${proxyApi}/beer/${id}`); //`${api}/beer/${id}/?key=${key}`
   }
 
   loadFavoriteBeers() {
