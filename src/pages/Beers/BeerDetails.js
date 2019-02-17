@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Spinner,
   Breadcrumb,
@@ -33,7 +34,7 @@ class BeerDetails extends Component {
           return;
         }
         const { found } = this.beerService.findBeerById(data.id);
-        this.setState({ beer: data, loading: false, favorite: found > 0 });
+        this.setState({ beer: data, loading: false, favorite: found >= 0 });
       })
       .catch(err => this.handleError(errorMessage));
   }
@@ -115,6 +116,19 @@ class BeerDetails extends Component {
                   </section>
                 )) ||
                   (!err && <Spinner />)}
+                {err && (
+                  <div>
+                    <div
+                      className="alert alert-danger col-md-3 col-sm-12"
+                      role="alert"
+                    >
+                      It looks like 🍺 not exist!
+                    </div>
+                    <NavLink to="/dashboard" className="btn btn-secondary">
+                      Go back
+                    </NavLink>
+                  </div>
+                )}
               </div>
             </div>
           </div>

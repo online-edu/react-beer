@@ -4,7 +4,7 @@ A sample app which is built using ReactJS v16, Bootstrap v4, SCSS, HTML and Java
 
 ## Demo
 
-Visit [`https://online-edu.github.io/react-beer`](https://online-edu.github.io/react-beer)
+Visit [`https://react-beers-cg.herokuapp.com`](https://react-beers-cg.herokuapp.com)
 
 ## Run app locally
 
