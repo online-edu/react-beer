@@ -8,7 +8,10 @@ const ListItem = props => (
       <ListItemIcon img={props.item.labels.icon} alt={props.item.nameDisplay} />
       <div className="media-body">
         <div className="float-left">
-          <h5 className="mt-0">{props.item.style.shortName}</h5>
+          <h5 className="mt-0">
+            {(props.item.style && props.item.style.shortName) ||
+              props.item.nameDisplay}
+          </h5>
           <p className="mb-0">
             <em>{props.item.nameDisplay}</em>
           </p>
